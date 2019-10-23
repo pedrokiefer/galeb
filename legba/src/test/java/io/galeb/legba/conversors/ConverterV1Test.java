@@ -72,65 +72,65 @@ public class ConverterV1Test {
     private Date dateTwo = Date.from(dateOne.toInstant().minus(10,  ChronoUnit.MINUTES));
 
     private HashMap<AbstractMap.SimpleEntry<State, String>, Boolean> hashNotModified = new HashMap<AbstractMap.SimpleEntry<State, String>, Boolean>(){{
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_1, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost1"), true);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost1"), true);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_2, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_3, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost2"), true);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost3"), true);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost5"), true);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost2"), true);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost3"), true);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_4, "virtualhost5"), true);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost1"), true);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost3"), true);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost1"), true);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost3"), true);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_5, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_6, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_7, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_8, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_9, "virtualhost5"), false);
 
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost1"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost2"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost3"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost4"), false);
-        put(new <State, String> AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost5"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost1"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost2"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost3"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost4"), false);
+        put(new AbstractMap.SimpleEntry<State, String>(State.STATE_10, "virtualhost5"), false);
     }};
 
     private HashMap<State, List<Object[]>> states = new HashMap<State, List<Object[]>>() {{
@@ -405,7 +405,7 @@ public class ConverterV1Test {
         for (VirtualHost virtualHost: lastMapBefore.keySet()) {
             String hashBefore = converterV1.get(currentState).makeHash(lastMapBefore.get(virtualHost));
             String hashAfter = converterV1.get(currentState).makeHash(lastMapAfter.get(virtualHost));
-            if (hashNotModified.get(new <State, String> AbstractMap.SimpleEntry<State, String>(nextState, virtualHost.getName()))) {
+            if (hashNotModified.get(new AbstractMap.SimpleEntry<State, String>(nextState, virtualHost.getName()))) {
                 Assert.assertEquals(virtualHost.getName() + " is NOT equals (" + hashBefore + " != " + hashAfter + ")", hashBefore, hashAfter);
             } else {
                 Assert.assertNotEquals(virtualHost.getName() + " IS equals (" + hashBefore + " == " + hashAfter + ")", hashBefore, hashAfter);
