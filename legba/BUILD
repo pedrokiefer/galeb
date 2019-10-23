@@ -28,12 +28,14 @@ java_library(
         "@maven//:org_springframework_data_spring_data_jpa",
         "@maven//:org_springframework_data_spring_data_redis",
         "@maven//:org_springframework_data_spring_data_rest_core",
+        "@maven//:mysql_mysql_connector_java",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_core",
         "@maven//:org_springframework_spring_jms",
         "@maven//:org_springframework_spring_tx",
         "@maven//:org_springframework_spring_web",
+        "@maven//:org_springframework_spring_jdbc",
     ],
 )
 

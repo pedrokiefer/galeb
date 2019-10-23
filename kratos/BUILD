@@ -16,6 +16,10 @@ java_library(
         "@maven//:org_apache_logging_log4j_log4j_core",
         "@maven//:org_apache_logging_log4j_log4j_jcl",
         "@maven//:org_apache_logging_log4j_log4j_slf4j_impl",
+        "@maven//:mysql_mysql_connector_java",
+        "@maven//:org_springframework_boot_spring_boot_starter_data_rest",
+        "@maven//:org_springframework_boot_spring_boot_starter_parent",
+        "@maven//:org_springframework_boot_spring_boot_starter_artemis",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
         "@maven//:org_springframework_data_spring_data_commons",
         "@maven//:org_springframework_data_spring_data_jpa",
@@ -27,6 +31,7 @@ java_library(
         "@maven//:org_springframework_spring_jms",
         "@maven//:org_springframework_spring_tx",
         "@maven//:org_springframework_spring_web",
+        "@maven//:com_h2database_h2",
     ],
 )
 
@@ -54,6 +59,8 @@ java_test(
     deps = [
         "//kratos:kratos-library",
         "//newcore",
+        "@maven//:biz_paluch_redis_lettuce",
+        "@maven//:com_zaxxer_HikariCP",
         "@maven//:javax_jms_javax_jms_api",
         "@maven//:javax_persistence_javax_persistence_api",
         "@maven//:junit_junit",

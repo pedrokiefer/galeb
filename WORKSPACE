@@ -30,9 +30,31 @@ maven_install(
         "org.apache.tomcat:tomcat-annotations-api:9.0.17",
         "org.springframework.boot:spring-boot-starter-parent:1.5.9.RELEASE",
         "org.springframework.boot:spring-boot-autoconfigure:1.5.9.RELEASE",
-        "org.springframework.boot:spring-boot-starter-data-jpa:1.5.9.RELEASE",
+        maven.artifact(
+            group = "org.springframework.boot",
+            artifact = "spring-boot-starter-data-jpa",
+            version = "1.5.9.RELEASE",
+            exclusions = [
+                "ch.qos.logback:logback-classic",
+            ]
+        ),
         "org.springframework.boot:spring-boot:1.5.9.RELEASE",
-        "org.springframework.boot:spring-boot-starter-data-rest:1.5.9.RELEASE",
+        maven.artifact(
+            group = "org.springframework.boot",
+            artifact = "spring-boot-starter-artemis",
+            version = "1.5.9.RELEASE",
+            exclusions = [
+                "ch.qos.logback:logback-classic",
+            ]
+        ),
+        maven.artifact(
+            group = "org.springframework.boot",
+            artifact = "spring-boot-starter-data-rest",
+            version = "1.5.9.RELEASE",
+            exclusions = [
+                "ch.qos.logback:logback-classic",
+            ]
+        ),
         "org.springframework.boot:spring-boot-test:1.5.9.RELEASE",
         "org.springframework.boot:spring-boot-test-autoconfigure:1.5.9.RELEASE",
         "org.springframework.data:spring-data-commons:1.13.9.RELEASE",
@@ -50,6 +72,7 @@ maven_install(
         "org.springframework:spring-tx:4.3.13.RELEASE",
         "org.springframework:spring-beans:4.3.13.RELEASE",
         "org.springframework:spring-test:4.3.13.RELEASE",
+        "org.springframework:spring-jdbc:4.3.13.RELEASE",
         "org.springframework:spring-jms:4.3.7.RELEASE",
         "org.springframework.security:spring-security-core:4.2.3.RELEASE",
         "org.springframework.security:spring-security-config:3.2.10.RELEASE",
@@ -57,12 +80,15 @@ maven_install(
         "org.springframework.security.oauth:spring-security-oauth2:2.0.14.RELEASE",
         "com.google.code.gson:gson:2.8.0",
         "com.google.guava:guava:23.1-jre",
+        "com.h2database:h2:1.4.196",
+        "org.javassist:javassist:3.22.0-GA",
         "org.apache.commons:commons-lang3:3.6",
         "org.apache.logging.log4j:log4j-api:2.8.1",
         "org.apache.logging.log4j:log4j-core:2.8.1",
         "org.apache.logging.log4j:log4j-jcl:2.8.1",
         "org.apache.logging.log4j:log4j-slf4j-impl:2.8.1",
         "org.slf4j:slf4j-api:1.7.25",
+        "mysql:mysql-connector-java:6.0.6",
         "biz.paluch.redis:lettuce:4.4.2.Final",
         "com.zaxxer:HikariCP:2.7.4",
         "javax.xml.bind:jaxb-api:2.2.11",
@@ -71,6 +97,7 @@ maven_install(
         "com.lmax:disruptor:3.3.6",
         "org.jodd:jodd-core:3.8.1",
         "io.undertow:undertow-core:2.0.22.Final",
+        "io.undertow:undertow-servlet:2.0.22.Final",
         "io.dropwizard.metrics:metrics-core:3.2.2",
         "org.asynchttpclient:async-http-client:2.6.0",
         "com.timgroup:java-statsd-client:3.1.0",
