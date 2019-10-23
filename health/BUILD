@@ -1,10 +1,10 @@
 load("@rules_java//java:defs.bzl", "java_binary", "java_library", "java_test")
 
 java_library(
-    name = "api-library",
+    name = "health-library",
     srcs = glob(
-        ["src/main/java/io/galeb/api/**/*.java"],
-        exclude = ["src/main/java/io/galeb/api/Application.java"],
+        ["src/main/java/io/galeb/health/**/*.java"],
+        exclude = ["src/main/java/io/galeb/health/Application.java"],
     ),
     deps = [
         "//newcore",
@@ -18,7 +18,12 @@ java_library(
         "@maven//:commons_logging_commons_logging",
         "@maven//:io_dropwizard_metrics_metrics_core",
         "@maven//:io_netty_netty_codec_http",
+        "@maven//:io_undertow_undertow_core",
+        "@maven//:javax_jms_javax_jms_api",
         "@maven//:javax_persistence_javax_persistence_api",
+        "@maven//:org_apache_activemq_artemis_commons",
+        "@maven//:org_apache_activemq_artemis_core_client",
+        "@maven//:org_apache_activemq_artemis_jms_client",
         "@maven//:org_apache_commons_commons_lang3",
         "@maven//:org_apache_logging_log4j_log4j_api",
         "@maven//:org_apache_logging_log4j_log4j_core",
@@ -45,6 +50,7 @@ java_library(
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_core",
+        "@maven//:org_springframework_spring_jms",
         "@maven//:org_springframework_spring_tx",
         "@maven//:org_springframework_spring_web",
         "@maven//:org_zalando_logbook_api",
@@ -54,13 +60,13 @@ java_library(
 )
 
 java_binary(
-    name = "api",
-    srcs = ["src/main/java/io/galeb/api/Application.java"],
-    main_class = "io.galeb.api.Application",
+    name = "health",
+    srcs = ["src/main/java/io/galeb/health/Application.java"],
+    main_class = "io.galeb.health.Application",
     resources = glob(["src/main/resources/**/*.java"]),
     visibility = ["//visibility:public"],
     deps = [
-        "//api:api-library",
+        "//health:health-library",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
         "@maven//:org_springframework_data_spring_data_jpa",
@@ -69,17 +75,19 @@ java_binary(
 )
 
 java_test(
-    name = "api-test",
-    srcs = ["src/main/java/io/galeb/api/Application.java"] + glob(["src/test/java/**/*.java"]),
+    name = "health-test",
+    srcs = ["src/main/java/io/galeb/health/Application.java"] + glob(["src/test/java/**/*.java"]),
     resources = glob(["src/test/resources/**/*.java"]),
-    test_class = "io.galeb.api.cucumber.CucumberTest",
+    test_class = "io.galeb.health.ApplicationTest",
     visibility = ["//visibility:public"],
     deps = [
-        "//api:api-library",
+        "//health:health-library",
         "//newcore",
+        "@maven//:com_github_stefanbirkner_system_rules",
         "@maven//:com_google_code_gson_gson",
         "@maven//:com_google_guava_guava",
         "@maven//:com_jayway_restassured_rest_assured",
+        "@maven//:com_squareup_okhttp3_mockwebserver",
         "@maven//:commons_logging_commons_logging",
         "@maven//:info_cukes_cucumber_core",
         "@maven//:info_cukes_cucumber_java",
@@ -88,8 +96,11 @@ java_test(
         "@maven//:info_cukes_gherkin",
         "@maven//:io_netty_netty_codec_http",
         "@maven//:io_undertow_undertow_core",
+        "@maven//:javax_jms_javax_jms_api",
         "@maven//:javax_persistence_javax_persistence_api",
         "@maven//:junit_junit",
+        "@maven//:junit_junit_dep",
+        "@maven//:org_apache_activemq_artemis_core_client",
         "@maven//:org_apache_commons_commons_lang3",
         "@maven//:org_apache_commons_commons_math3",
         "@maven//:org_apache_tomcat_tomcat_annotations_api",
@@ -99,6 +110,8 @@ java_test(
         "@maven//:org_hamcrest_hamcrest_core",
         "@maven//:org_hamcrest_hamcrest_library",
         "@maven//:org_jboss_xnio_xnio_api",
+        "@maven//:org_mock_server_mockserver_core",
+        "@maven//:org_mock_server_mockserver_netty",
         "@maven//:org_mockito_mockito_all",
         "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_boot_spring_boot",
@@ -108,7 +121,9 @@ java_test(
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_core",
+        "@maven//:org_springframework_spring_jms",
         "@maven//:org_springframework_spring_test",
         "@maven//:org_springframework_spring_tx",
+        "@maven//:org_springframework_spring_web",
     ],
 )

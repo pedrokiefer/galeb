@@ -11,7 +11,8 @@ http_archive(
     url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
 )
 
-load("@rules_jvm_external//:defs.bzl", "maven_install")
+load("@rules_jvm_external//:defs.bzl", "maven_install", "artifact")
+load("@rules_jvm_external//:specs.bzl", "maven")
 
 maven_install(
     artifacts = [
@@ -20,14 +21,20 @@ maven_install(
         "com.fasterxml.jackson.core:jackson-databind:2.8.10",
         "javax.persistence:javax.persistence-api:2.2",
         "javax.activation:activation:1.1.1",
+        "javax.jms:javax.jms-api:2.0.1",
         "commons-logging:commons-logging:1.2",
         "commons-io:commons-io:2.5",
+        "org.apache.activemq:artemis-commons:1.5.5",
+        "org.apache.activemq:artemis-core-client:1.5.5",
+        "org.apache.activemq:artemis-jms-client:1.5.5",
         "org.apache.tomcat:tomcat-annotations-api:9.0.17",
         "org.springframework.boot:spring-boot-starter-parent:1.5.9.RELEASE",
         "org.springframework.boot:spring-boot-autoconfigure:1.5.9.RELEASE",
+        "org.springframework.boot:spring-boot-starter-data-jpa:1.5.9.RELEASE",
         "org.springframework.boot:spring-boot:1.5.9.RELEASE",
         "org.springframework.boot:spring-boot-starter-data-rest:1.5.9.RELEASE",
         "org.springframework.boot:spring-boot-test:1.5.9.RELEASE",
+        "org.springframework.boot:spring-boot-test-autoconfigure:1.5.9.RELEASE",
         "org.springframework.data:spring-data-commons:1.13.9.RELEASE",
         "org.springframework.data:spring-data-jpa:1.11.9.RELEASE",
         "org.springframework.data:spring-data-rest-core:2.6.9.RELEASE",
@@ -37,12 +44,13 @@ maven_install(
         "org.springframework.hateoas:spring-hateoas:0.23.0.RELEASE",
         "org.hibernate:hibernate-core:5.0.12.Final",
         "org.springframework:spring-core:4.3.13.RELEASE",
+        "org.springframework:spring-orm:4.3.13.RELEASE",
         "org.springframework:spring-web:4.3.13.RELEASE",
         "org.springframework:spring-context:4.3.13.RELEASE",
         "org.springframework:spring-tx:4.3.13.RELEASE",
         "org.springframework:spring-beans:4.3.13.RELEASE",
         "org.springframework:spring-test:4.3.13.RELEASE",
-        "org.springframework:spring-jms:4.3.13.RELEASE",
+        "org.springframework:spring-jms:4.3.7.RELEASE",
         "org.springframework.security:spring-security-core:4.2.3.RELEASE",
         "org.springframework.security:spring-security-config:3.2.10.RELEASE",
         "org.springframework.security:spring-security-web:3.2.10.RELEASE",
@@ -64,7 +72,7 @@ maven_install(
         "org.jodd:jodd-core:3.8.1",
         "io.undertow:undertow-core:2.0.22.Final",
         "io.dropwizard.metrics:metrics-core:3.2.2",
-        "org.asynchttpclient:async-http-client:2.1.0-alpha8",
+        "org.asynchttpclient:async-http-client:2.6.0",
         "com.timgroup:java-statsd-client:3.1.0",
         "org.jboss.xnio:xnio-api:3.3.8.Final",
         "io.netty:netty-codec-http:4.1.9.Final",
@@ -82,10 +90,17 @@ maven_install(
         "org.hamcrest:hamcrest-core:1.3",
         "org.hamcrest:hamcrest-library:1.3",
         "junit:junit:4.12",
+        "junit:junit-dep:4.10",
         "org.assertj:assertj-core:2.6.0",
         "org.apache.commons:commons-math3:3.6.1",
         "com.jayway.restassured:rest-assured:2.9.0",
         "org.flywaydb:flyway-core:5.0.2",
+        "com.github.stefanbirkner:system-rules:1.18.0",
+        "com.squareup.okhttp3:mockwebserver:3.14.1",
+        "org.mock-server:mockserver-core:4.0.0",
+        "org.mock-server:mockserver-netty:4.0.0",
+        "com.jayway.jsonpath:json-path:2.2.0",
+        "net.minidev:json-smart:2.2.1",
     ],
     repositories = [
         "https://jcenter.bintray.com/",
