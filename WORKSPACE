@@ -38,6 +38,14 @@ maven_install(
                 "ch.qos.logback:logback-classic",
             ]
         ),
+        maven.artifact(
+            group = "org.springframework.boot",
+            artifact = "spring-boot-starter-test",
+            version = "1.5.9.RELEASE",
+            exclusions = [
+                "ch.qos.logback:logback-classic",
+            ]
+        ),
         "org.springframework.boot:spring-boot:1.5.9.RELEASE",
         maven.artifact(
             group = "org.springframework.boot",
@@ -50,6 +58,14 @@ maven_install(
         maven.artifact(
             group = "org.springframework.boot",
             artifact = "spring-boot-starter-data-rest",
+            version = "1.5.9.RELEASE",
+            exclusions = [
+                "ch.qos.logback:logback-classic",
+            ]
+        ),
+        maven.artifact(
+            group = "org.springframework.boot",
+            artifact = "spring-boot-starter",
             version = "1.5.9.RELEASE",
             exclusions = [
                 "ch.qos.logback:logback-classic",
