@@ -95,4 +95,4 @@ jobs:
               GALEB_LDAP_PASS: xxx
               GALEB_LDAP_BASE: dc=test
               GALEB_LDAP_ATTR_DN: cn
-          run: mvn --batch-mode --update-snapshots verify
+          run: mvn --batch-mode --update-snapshots verify -f router/pom.xml
