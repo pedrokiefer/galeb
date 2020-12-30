@@ -73,6 +73,8 @@ jobs:
             key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
             restore-keys: ${{ runner.os }}-m2
         - name: Build with Maven
+          run: mvn build -DskipTests
+        - name: Test with Maven
           env:
               BROKER_CONN: tcp://localhost:61616?blockOnDurableSend=false&consumerWindowSize=0&protocols=Core
               ## ADMIN ##
