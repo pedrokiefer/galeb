@@ -8,9 +8,9 @@ jobs:
     services:
       # Label used to access the service container
       redis:
-        # Docker Hub image
-        image: redis
-        # Set health checks to wait until redis has started
+        image: redis:3.2.6-alpine
+        ports:
+          - 6379
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -18,10 +18,10 @@ jobs:
           --health-retries 5
       # Mysql
       mysql:
-        image: mysql:5.7
+        image: mysql:5.6
         env:
-            MYSQL_ALLOW_EMPTY_PASSWORD: yes
-            MYSQL_DATABASE: laravel_tags
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: galeb_api
         ports:
             - 3306
         options: >-
@@ -35,9 +35,25 @@ jobs:
         env:
           ARTEMIS_USERNAME: guest
           ARTEMIS_PASSWORD: guest
+          ARTEMIS_MIN_MEMORY: 512M
+          ARTEMIS_MAX_MEMORY: 1024M
+          ARTEMIS_PERF_JOURNAL: AUTO
         ports:
             - 61613
             - 61616
+            - 8161
+
+      ldap:
+        image: tuxmonteiro/ldap-mock:latest
+        ports:
+            - 3890
+        volumes:
+            - ${{ github.workspace }}/users.json:/usr/src/app/users/users.json
+
+      fake-oauth2:
+        image: tuxmonteiro/galeb-fake-oauth2
+        ports:
+            - 9000
 
     steps:
         - uses: actions/checkout@v2
@@ -53,5 +69,25 @@ jobs:
             restore-keys: ${{ runner.os }}-m2
         - name: Build with Maven
           env:
-            BROKER_CONN: "tcp://activemq:61616?blockOnDurableSend=false&consumerWindowSize=0&protocols=Core"
+              BROKER_CONN: tcp://activemq:61616?blockOnDurableSend=false&consumerWindowSize=0&protocols=Core
+              ## ADMIN ##
+              LOCAL_TOKEN: pass
+
+              ## DB ##
+              GALEB_DB_URL: jdbc:mysql://mysql:3306/galeb_api?autoReconnect=true&createDatabaseIfNotExist=true
+              GALEB_DB_USER: root
+              GALEB_DB_PASS: password
+              GALEB_DB_DRIVER: com.mysql.cj.jdbc.Driver
+              GALEB_DB_DIALECT: org.hibernate.dialect.MySQLDialect
+              SHOW_SQL: true
+
+              ## REDIS ##
+              REDIS_URL: redis://redis
+
+              ## LDAP ##
+              GALEB_LDAP_URL: ldap://ldap:3890
+              GALEB_LDAP_USER: cn=user1,dc=test
+              GALEB_LDAP_PASS: xxx
+              GALEB_LDAP_BASE: dc=test
+              GALEB_LDAP_ATTR_DN: cn
           run: mvn --batch-mode --update-snapshots verify
