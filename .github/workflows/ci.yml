@@ -53,7 +53,7 @@ jobs:
         ports:
             - 3890
         volumes:
-            - ${{ github.workspace }}/docs/users.json:/usr/src/app/users/users.json
+            - ${{ github.workspace }}/docs/:/usr/src/app/users/
 
       fake-oauth2:
         image: tuxmonteiro/galeb-fake-oauth2
